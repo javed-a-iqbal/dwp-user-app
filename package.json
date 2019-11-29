@@ -1,0 +1,32 @@
+{
+  "name": "dwp-user-app",
+  "version": "1.0.0",
+  "description": "API which calls the API at https://bpdts-test-app.herokuapp.com/, and returns people who are listed as either living in London, or whose current coordinates are within 50 miles of London",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javed-a-iqbal/dwp-user-app.git"
+  },
+  "author": "javed iqbal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javed-a-iqbal/dwp-user-app/issues"
+  },
+  "homepage": "https://github.com/javed-a-iqbal/dwp-user-app#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.4.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "express": "^4.17.1",
+    "geopoint": "^1.0.1",
+    "lodash": "^4.17.15",
+    "mocha": "^6.2.2"
+  }
+}
