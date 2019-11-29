@@ -30,3 +30,14 @@ module.exports.getAllUsers = async () => new Promise((resolve, reject) => {
       reject(error);
     });
 });
+
+module.exports.getUsersNearLocation = async (location, radius) => {
+  const users = await this.getAllUsers();
+
+  const matched = [];
+  users.forEach(async (user) => {
+    const between = await distance.getDistanceBetween(location, user);
+    if (between <= radius) {
+      matched.push(user);
+    }
+  });

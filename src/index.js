@@ -11,19 +11,10 @@ const radius=50;
 
 app.get('/users/london', async (req, res) => {
   const usersFromCityLondon = await util.getUsersByCityName('London');
-  const allUsers = await util.getAllUsers();
+  const coordinatesLondon = await users.getUsersNearLocation(location, radius);
+  const result = _.union(usersFromCityLondon, coordinatesLondon);
 
-
-    const matched = [];
-    allUsers.forEach(async (user) => {
-      const between = await util.getDistanceBetween(location, user);
-      if (between <= radius) {
-        matched.push(user);
-      }
-    });
-
-
-  return res.json(allUsers);
+  return res.json(result);
 });
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
