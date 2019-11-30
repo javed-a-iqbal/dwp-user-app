@@ -4,11 +4,11 @@ const config = require('../app-config');
 
 
 
-module.exports.getDistanceBetween = async (l1, l2) => {
+module.exports.findDistanceBetween = async (l1, l2) => {
   const p1 = new GeoPoint(l1.latitude, l1.longitude);
   const p2 = new GeoPoint(l2.latitude, l2.longitude);
 
-  return p1.distanceTo(p1, false);
+  return p1.distanceTo(p2, false);
 };
 
 
@@ -31,13 +31,18 @@ module.exports.getAllUsers = async () => new Promise((resolve, reject) => {
     });
 });
 
-module.exports.getUsersNearLocation = async (location, radius) => {
-  const users = await this.getAllUsers();
+module.exports.getUsersCoordinatesIn50miles = async (location, radius) => {
+  const urs = await this.getAllUsers();
+  const usersWithInRadius = [];
 
-  const matched = [];
-  users.forEach(async (user) => {
-    const between = await distance.getDistanceBetween(location, user);
-    if (between <= radius) {
-      matched.push(user);
+  urs.forEach(async (u) => {
+    const d = await this.findDistanceBetween(location, u);
+    if (d <= radius) {
+      usersWithInRadius.push(u);
     }
   });
+
+  return new Promise((resolve) => {
+    resolve(usersWithInRadius);
+  });
+};

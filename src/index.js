@@ -2,21 +2,19 @@ const express = require('express');
 const util = require('../src/util');
 const config = require('../src/app-config');
 
-
-
 const app = express();
-const port = 3000;
-const location={ latitude: 51.50853, longitude: -0.12574 };;
-const radius=50;
 
 app.get('/users/london', async (req, res) => {
-  const usersFromCityLondon = await util.getUsersByCityName('London');
-  const coordinatesLondon = await users.getUsersNearLocation(location, radius);
-  const result = _.union(usersFromCityLondon, coordinatesLondon);
+   const usersFromCityLondon = await util.getUsersByCityName('London');
+   const coordinatesLondon = await util.getUsersCoordinatesIn50miles(config.coordinateRange, config.radius);
+
+   //  remove duplicate after combining two arrays
+   var c = usersFromCityLondon.concat(coordinatesLondon)
+   var result = c.filter((item, pos) => c.indexOf(item) === pos)
 
   return res.json(result);
 });
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(config.port, () => console.log(`App listening on port ${config.port}!`));
 
 module.exports.app = app;
