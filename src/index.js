@@ -15,6 +15,6 @@ app.get('/users/london', async (req, res) => {
   return res.json(result);
 });
 
-app.listen(config.port, () => console.log(`App listening on port ${config.port}!`));
+app.listen(config.port, () => console.log(`App listening on port ${config.port}!!`));
 
 module.exports.app = app;

@@ -5,10 +5,14 @@ const config = require('../app-config');
 
 
 module.exports.findDistanceBetween = async (l1, l2) => {
+try{
   const p1 = new GeoPoint(l1.latitude, l1.longitude);
   const p2 = new GeoPoint(l2.latitude, l2.longitude);
 
   return p1.distanceTo(p2, false);
+  } catch(e) {
+      console.log('Error caught'+e);
+    }
 };
 
 
