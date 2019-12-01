@@ -65,7 +65,7 @@ module.exports.getUsersCoordinatesIn50miles = async (location, radius) => {
   urs.forEach(async (u) => {
     const d = await this.distance(location.latitude, location.longitude, u.latitude, u.longitude, 'M');
     if (d <= radius) {
-        console.log(" d< 50***********************"+d)
+        //console.log(" d< 50***********************"+d)
         usersWithInRadius.push(u);
     }
   });
