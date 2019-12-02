@@ -38,8 +38,8 @@ describe('dwp test app home', () => {
     });
 
     // users in london city
-    describe('GET /users', () => {
-          it('returns all users by city', () => {
+    describe('GET /users/city/london', () => {
+          it('returns all users by city london', () => {
             // mock expected result
             const expected = JSON.parse(fs.readFileSync(`${__dirname}/json/cityUser.json`));
              chai.request(app)
