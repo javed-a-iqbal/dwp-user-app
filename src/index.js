@@ -15,6 +15,21 @@ app.get('/users/london', async (req, res) => {
   return res.json(result);
 });
 
+app.get('/users', async (req, res) => {
+   const allUsers = await util.getAllUsers();
+
+
+  return res.json(allUsers);
+});
+
+app.get('/users/city/london', async (req, res) => {
+   const cityUsers = await util.getUsersByCityName('London');
+
+
+  return res.json(cityUsers);
+});
+
+
 app.listen(config.port, () => console.log(`App listening on port ${config.port}!!`));
 
 module.exports.app = app;
