@@ -2,8 +2,11 @@
 
 I have defined following three routes.
 1 http://localhost:3000/users/   for all users.
+
 2 http://localhost:3000/users/london   users in the london city or 50 miles in london.
+
 3 http://localhost:3000/users/city/london  for city london only users.
+
 
 I used the following dependencies with globally installed nodemon.
     "axios": "^0.19.0",
