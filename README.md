@@ -1,22 +1,49 @@
-# dwp-user-app
+# DWP-user-app
 
-I have defined following three routes.
-1 http://localhost:3000/users/   for all users.
-
-2 http://localhost:3000/users/london   users in the london city or 50 miles in london.
-
-3 http://localhost:3000/users/city/london  for city london only users.
+### Overview of the App
+An API which calls https://bpdts-test-app.herokuapp.com/, and returns people who are listed as either living in London, or whose current coordinates are within 50 miles of London.
 
 
-I used the following dependencies with globally installed nodemon.
-    "axios": "^0.19.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "express": "^4.17.1",
-    "geopoint": "^1.0.1",
-    "mocha": "^6.2.2"
+## Dependencies
+ - Express
+ - Nodemon (installed globally)
+ - Mocha
+ - Chai
+ - Chai-http
+ - Nock
+ - Axios
 
+## How to Run  app Locally
 
+clone the app
+
+Setup
+```
+npm install
+```
+Run
+```
+node src/index.js
+```
+
+### How to Call API
+
+```
+localhost:3000/users/london
+
+returns people who are listed as either living in London, or whose current coordinates are within 50 miles of London.
+
+```
+localhost:3000/users        (for all users)
+```
+
+localhost:3000/users/city/london
+
+return user in london city only
+```
+
+## Testing
+Run
+```
 npm test
-
-nodemon src/index.js
+```
