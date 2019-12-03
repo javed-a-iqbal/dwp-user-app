@@ -26,8 +26,8 @@ Run
 node src/index.js
 ```
 
-### Calling API
-Postman (GET)
+### How to Call API
+
 ```
 localhost:3000/users/london
 
