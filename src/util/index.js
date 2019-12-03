@@ -1,21 +1,7 @@
 const axios = require('axios');
-const GeoPoint = require('geopoint');
 const config = require('../app-config');
 
-
-// calculate distance using GeoPoint
-module.exports.findDistanceBetween = async (l1, l2) => {
-try{
-  const p1 = new GeoPoint(l1.latitude, l1.longitude);
-  const p2 = new GeoPoint(l2.latitude, l2.longitude);
-
-  return p1.distanceTo(p2, false);
-  } catch(e) {
-      console.log('Error caught'+e);
-    }
-};
-
-// calculate distance using custom function, we will use this function in our final solution
+// calculate distance using custom function instead of GeoPoint
 module.exports.distance= async (lat1, lon1, lat2, lon2, unit) => {
 	if ((lat1 == lat2) && (lon1 == lon2)) {
 		return 0;
@@ -37,7 +23,6 @@ module.exports.distance= async (lat1, lon1, lat2, lon2, unit) => {
 		return dist;
 	}
 }
-
 
 module.exports.getUsersByCityName = async (cityName) => new Promise((resolve, reject) => {
   axios.get(`${config.url}/city/${cityName}/users`).then((response) => {
@@ -65,7 +50,6 @@ module.exports.getUsersCoordinatesIn50miles = async (location, radius) => {
   urs.forEach(async (u) => {
     const d = await this.distance(location.latitude, location.longitude, u.latitude, u.longitude, 'M');
     if (d <= radius) {
-        //console.log(" d< 50***********************"+d)
         usersWithInRadius.push(u);
     }
   });
