@@ -4,6 +4,7 @@ const fs = require('fs');
 const { app } = require('../src/index');
 
 chai.use(chaiHttp);
+
 describe('dwp test app home', () => {
 
   describe('GET users/london', () => {
